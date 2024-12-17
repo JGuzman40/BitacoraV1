@@ -1,3 +1,4 @@
+const { where } = require("sequelize");
 const { User } = require("../db");
 const bcrypt = require("bcryptjs");
 
@@ -14,17 +15,22 @@ const createUserService = async (data) => {
   const hashedPassword = await bcrypt.hash(password, salt);
 
   // creación de un nuevo usuario
-  return await User.create({
+  const newUser = await User.create({
     name,
     email,
     password: hashedPassword,
     role,
     isActive,
   });
+  return newUser;
 };
 
 const getUsersService = async () => {
-  return await User.findAll();
+  return await User.findAll({
+    where: {
+      isActive: true,
+    },
+  });
 };
 
 const getUserByIdService = async (id) => {

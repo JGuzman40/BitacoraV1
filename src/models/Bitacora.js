@@ -11,6 +11,7 @@ module.exports = (sequelize) => {
       },
       startDate: {
         type: DataTypes.DATEONLY,
+        allowNull: false,
         defaultValue: DataTypes.NOW,
       },
       day: {
@@ -25,6 +26,14 @@ module.exports = (sequelize) => {
       isActive: {
         type: DataTypes.BOOLEAN,
         defaultValue: true,
+      },
+      participanteId: {
+        type: DataTypes.UUID,
+        allowNull: false,
+        references: {
+          model: "Users", // El nombre de la tabla de usuarios en la base de datos
+          key: "id", // El campo de referencia
+        },
       },
     },
     {
