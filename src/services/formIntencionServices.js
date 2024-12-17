@@ -18,7 +18,6 @@ const createFormIntencionService = async (lineaBaseId, data) => {
 const getFormIntencionService = async (lineaBaseId) => {
   const formIntencion = await FormIntencion.findOne({
     where: { lineaBaseId },
-    include: ["lineaBase"],
   });
   if (!formIntencion) throw new Error("Formulario de intención no encontrado");
   return formIntencion;
