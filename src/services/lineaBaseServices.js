@@ -13,7 +13,6 @@ const createLineaBaseService = async (bitacoraId, data) => {
 const getLineaBaseService = async (bitacoraId) => {
   const lineaBase = await LineaBase.findOne({
     where: { bitacoraId },
-    include: ["bitacora"], // Relación con Bitacora
   });
   if (!lineaBase) throw new Error("Linea base no encontrada");
   return lineaBase;
