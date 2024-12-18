@@ -6,6 +6,7 @@ const lineaBaseRoutes = require("./lineaBaseRoutes");
 const formIntencionRoutes = require("./formIntencionRoutes");
 const formElementosRoutes = require("./formElementosRoutes");
 const formEstadosRoutes = require("./formEstadosRoutes");
+const formDosisDiariaRoutes = require("./formDosisDiariaRoutes");
 
 const router = Router();
 
@@ -16,5 +17,6 @@ router.use("/linea-base", lineaBaseRoutes);
 router.use("/form-intencion", formIntencionRoutes);
 router.use("/form-elementos", formElementosRoutes);
 router.use("/form-estados", formEstadosRoutes);
+router.use("/form-dosis", formDosisDiariaRoutes);
 
 module.exports = router;
