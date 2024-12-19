@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const userRoutes = require("./userRoutes");
+const loginRoutes = require("./authRoutes");
 const bitacoraRoutes = require("./bitacoraRoutes");
 const formGeneralRoutes = require("./formGeneralRoutes");
 const lineaBaseRoutes = require("./lineaBaseRoutes");
@@ -11,6 +12,7 @@ const formDosisDiariaRoutes = require("./formDosisDiariaRoutes");
 const router = Router();
 
 router.use("/user", userRoutes);
+router.use("/auth", loginRoutes);
 router.use("/bitacora", bitacoraRoutes);
 router.use("/form-general", formGeneralRoutes);
 router.use("/linea-base", lineaBaseRoutes);
