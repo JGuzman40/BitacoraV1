@@ -1,4 +1,10 @@
-const { LineaBase, Bitacora } = require("../db");
+const {
+  LineaBase,
+  Bitacora,
+  FormElementos,
+  FormEstados,
+  FormIntencion,
+} = require("../db");
 
 const createLineaBaseService = async (bitacoraId, data) => {
   const bitacora = await Bitacora.findByPk(bitacoraId);
@@ -13,6 +19,7 @@ const createLineaBaseService = async (bitacoraId, data) => {
 const getLineaBaseService = async (bitacoraId) => {
   const lineaBase = await LineaBase.findOne({
     where: { bitacoraId },
+    include: [FormIntencion, FormElementos, FormEstados],
   });
   if (!lineaBase) throw new Error("Linea base no encontrada");
   return lineaBase;

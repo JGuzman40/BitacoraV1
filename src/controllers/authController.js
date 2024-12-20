@@ -5,7 +5,10 @@ const login = async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    const { user, token } = await loginUserService(email, password);
+    const { user, token, hasBitacora } = await loginUserService(
+      email,
+      password
+    );
 
     res.status(200).json({
       success: true,
@@ -16,6 +19,7 @@ const login = async (req, res) => {
         role: user.role,
       },
       token,
+      hasBitacora,
     });
   } catch (error) {
     res.status(401).json({ success: false, message: error.message });

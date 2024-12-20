@@ -1,4 +1,4 @@
-const { Bitacora, User } = require("../db");
+const { Bitacora, User, FormDosisDiaria } = require("../db");
 
 const createBitacoraService = async (data) => {
   const { startDate, day, isActive, participanteId } = data;
@@ -35,6 +35,9 @@ const getBitacorasService = async () => {
         model: User,
         as: "participante",
         attributes: ["id", "name", "role"], // Puedes elegir qué atributos mostrar
+      },
+      {
+        model: FormDosisDiaria, // Incluye la dosis diaria de la línea base
       },
     ],
   });
